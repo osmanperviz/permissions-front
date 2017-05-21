@@ -5,9 +5,11 @@ import { Provider } from 'react-redux'
 
 import createStore, { sagaMiddleware } from './store'
 import routes from './routes'
+import rootSaga from './sagas'
 
 
 const store = createStore({})
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>
