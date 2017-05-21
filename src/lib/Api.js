@@ -27,8 +27,9 @@ class Api {
     return this.xhr(route, params, 'DELETE')
   }
 
-  static xhr(route, params, verb, host=Api.backend_endpoint) {
-    const url = `${localhost:3001}${route}`
+  static xhr(route, params, verb) {
+    const host = 'http://localhost:3001'
+    const url = `${host}${route}`
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null);
     options.headers = Api.headers()
     return fetch(url, options).then( resp => {
@@ -42,4 +43,3 @@ class Api {
 }
 
 export default Api
-Contact GitHub

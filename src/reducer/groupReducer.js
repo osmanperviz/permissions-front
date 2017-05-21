@@ -2,9 +2,9 @@ import * as types from '../Actions/types'
 
 function groups(state = {}, action) {
   switch (action.type) {
-    case types.GET_ALL_GROUPS:
-
-      return state
+    case types.FETCH_GROUP_SUCCESS:
+      return [...state, ...action.groups ]
+      break;
 
     default:
       return state

@@ -7,11 +7,11 @@ import FlatButton from 'material-ui/FlatButton';
 
 
 
-class GroupsList extends Component {
+class Groups extends Component {
 
-  
 
   render() {
+    console.log('list', this.props)
     return (
       <Card>
         <CardHeader title="Groups"/>
@@ -24,7 +24,7 @@ class GroupsList extends Component {
         </CardActions>
 
         <CardText >
-          <GroupTable />
+          <GroupTable groups={this.props.groups}/>
         </CardText>
 
       </Card>
@@ -32,4 +32,4 @@ class GroupsList extends Component {
   }
 };
 
-export default GroupsList;
+export default Groups;

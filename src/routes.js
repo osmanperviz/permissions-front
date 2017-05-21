@@ -8,7 +8,7 @@ export default (
   <Router history={browserHistory}>
     <Route component={App} >
         <Route path='/permissions' component={Permissions} />
-        <Redirect from="/" to="permissions  " />
+        <Redirect from="/" to="permissions" />
     </Route>
   </Router>
 )

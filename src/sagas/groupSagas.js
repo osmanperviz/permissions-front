@@ -1,11 +1,11 @@
 import { fork, put, call, select, takeLatest,takeEvery } from "redux-saga/effects"
-// import Api from '../lib/Api'
+import Api from '../lib/Api'
 import * as types from '../Actions/types'
 
 function* performGetGroups(request){
-  debugger;
   try {
-
+    const groups = yield call(Api.get, '/groups')
+    yield put({type: types.FETCH_GROUP_SUCCESS, groups})
   } catch (err) {
 
   }

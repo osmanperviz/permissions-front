@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Groups from './Groups'
-import {getGroups} from '../Actions'
+import { getGroups } from '../Actions'
 
 class Permissions extends Component {
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.getGroups()
   }
 
   render() {
+    console.log('permissions', this.props.groups)
     return (
-    <Groups />
+      <Groups groups={this.props.groups} />
     )
   }
 }
