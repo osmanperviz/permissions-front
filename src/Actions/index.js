@@ -5,3 +5,8 @@ export function getGroups() {
     type: types.GET_ALL_GROUPS,
   }
 }
+export function getUsers() {
+  return {
+    type: types.GET_ALL_USERS,
+  }
+}

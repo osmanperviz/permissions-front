@@ -1,18 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Groups from './Groups'
-import { getGroups } from '../Actions'
+import GroupsAndUsers from './GroupsAndUsers'
+import Navigation from './AppBar'
+import { getGroups, getUsers } from '../Actions'
 
 class Permissions extends Component {
 
   componentWillMount() {
     this.props.getGroups()
+    this.props.getUsers()
   }
 
   render() {
-    console.log('permissions', this.props.groups)
     return (
-      <Groups groups={this.props.groups} />
+      <div>
+        <Navigation />
+        <Groups groups={this.props.groups} />
+        <GroupsAndUsers groups={this.props.groups} users={this.props.users} />
+      </div>
     )
   }
 }
@@ -21,6 +27,9 @@ function mapDispatchToProps(dispatch) {
   return {
     getGroups: () => {
       dispatch(getGroups())
+    },
+    getUsers: () => {
+      dispatch(getUsers())
     }
   }
 }
@@ -28,6 +37,7 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     groups: state.groups,
+    users: state.users,
   }
 }
 

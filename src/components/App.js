@@ -17,14 +17,4 @@ class App extends Component {
   }
 }
 
-// function mapDispatchToProps(dispatch, ownProps) {
-//   return {
-//     setSocket: (socket) => {
-//       dispatch(setSocket(socket));
-//     }
-//   }
-// }
-
-
-// export default connect(null, mapDispatchToProps)(App)
 export default App

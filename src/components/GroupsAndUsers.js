@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import GroupTable from './GroupTable'
+import GroupsAndUsersTable from './GroupsAndUsersTable'
 import Modal from './Modal'
 
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
@@ -8,14 +8,14 @@ import FlatButton from 'material-ui/FlatButton';
 
 
 
-class Groups extends Component {
+class GroupsAndUsers extends Component {
 
   render() {
     return (
       <Card>
-        <CardHeader title="Groups"/>
+        <CardHeader title="Groups And Users"/>
         <CardText >
-          <GroupTable groups={this.props.groups}/>
+          <GroupsAndUsersTable groups={this.props.groups} users={this.props.users} />
         </CardText>
 
       </Card>
@@ -24,4 +24,4 @@ class Groups extends Component {
   }
 };
 
-export default Groups;
+export default GroupsAndUsers;

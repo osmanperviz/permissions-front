@@ -8,14 +8,14 @@ import {
   TableRowColumn,
 } from 'material-ui/Table';
 
-class GroupTable extends React.Component {
+class GroupAndUsersTable extends React.Component {
   render(){
     return(
       <Table selectable={false}>
         <TableHeader>
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
-            <TableHeaderColumn>Users</TableHeaderColumn>
+            <TableHeaderColumn>Permissions</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -23,7 +23,15 @@ class GroupTable extends React.Component {
             return <TableRow key={group.id}>
               <TableRowColumn>{group.name}</TableRowColumn>
 
-              <TableRowColumn>{group.users.map((user) => `${user.username} ,`)}</TableRowColumn>
+              <TableRowColumn>{group.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
+            </TableRow>
+          }) : null }
+
+          { this.props.users.length > 0 ? this.props.users.map((user) => {
+            return <TableRow key={user.id}>
+              <TableRowColumn>{user.username}</TableRowColumn>
+
+              <TableRowColumn>{user.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
             </TableRow>
           }) : null }
         </TableBody>
@@ -32,4 +40,4 @@ class GroupTable extends React.Component {
   }
 };
 
-export default GroupTable;
+export default GroupAndUsersTable;
