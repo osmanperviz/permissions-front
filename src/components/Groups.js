@@ -15,7 +15,10 @@ class Groups extends Component {
       <Card>
         <CardHeader title="Groups"/>
         <CardText >
-          <GroupTable groups={this.props.groups}/>
+          <GroupTable
+            groups={this.props.groups}
+            permissionToGroup={this.props.permissionToGroup}
+          />
         </CardText>
 
       </Card>

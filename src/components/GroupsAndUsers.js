@@ -15,7 +15,11 @@ class GroupsAndUsers extends Component {
       <Card>
         <CardHeader title="Groups And Users"/>
         <CardText >
-          <GroupsAndUsersTable groups={this.props.groups} users={this.props.users} />
+          <GroupsAndUsersTable
+            groups={this.props.groups}
+            users={this.props.users}
+            permissionToUser={this.props.permissionToUser}
+          />
         </CardText>
 
       </Card>

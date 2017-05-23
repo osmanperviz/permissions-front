@@ -1,4 +1,5 @@
 import React from 'react';
+import FlatButton from 'material-ui/FlatButton';
 import {
   Table,
   TableBody,
@@ -16,6 +17,7 @@ class GroupAndUsersTable extends React.Component {
           <TableRow>
             <TableHeaderColumn>Name</TableHeaderColumn>
             <TableHeaderColumn>Permissions</TableHeaderColumn>
+            <TableHeaderColumn>Actions</TableHeaderColumn>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -24,6 +26,11 @@ class GroupAndUsersTable extends React.Component {
               <TableRowColumn>{group.name}</TableRowColumn>
 
               <TableRowColumn>{group.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
+              <TableRowColumn>
+                 <FlatButton primary={true}>Add user</FlatButton>
+                 <FlatButton primary={true}>Clear Permissions</FlatButton>
+                 <FlatButton primary={true}>Clear Users</FlatButton>
+              </TableRowColumn>
             </TableRow>
           }) : null }
 
@@ -32,6 +39,12 @@ class GroupAndUsersTable extends React.Component {
               <TableRowColumn>{user.username}</TableRowColumn>
 
               <TableRowColumn>{user.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
+              <TableRowColumn>
+                 <FlatButton primary={true} onClick={this.props.permissionToUser}>Add Permission</FlatButton>
+                 <FlatButton primary={true}>Add to Group</FlatButton>
+                 <FlatButton primary={true}>Clear Permissions</FlatButton>
+                 <FlatButton primary={true}>Clear Groups</FlatButton>
+              </TableRowColumn>
             </TableRow>
           }) : null }
         </TableBody>

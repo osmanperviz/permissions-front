@@ -8,7 +8,7 @@ import routes from './routes'
 import rootSaga from './sagas'
 
 
-const store = createStore({})
+const store = createStore({modalOpen: false})
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(

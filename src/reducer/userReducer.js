@@ -6,6 +6,10 @@ function users(state = {}, action) {
       return [...state, ...action.users ]
       break;
 
+    case types.SUCCESS_ASSIGN_PERMISSION:
+      return [...state, ...action.user]
+      break;
+
     default:
       return state
   }

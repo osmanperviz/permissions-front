@@ -5,6 +5,10 @@ function groups(state = {}, action) {
     case types.FETCH_GROUP_SUCCESS:
       return [...state, ...action.groups ]
       break;
+    case types.SUCCESS_ASSIGN_PERMISSION_TO_GROUP:
+    debugger;
+      return [...state, ...action.group ]
+      break;
 
     default:
       return state
