@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
-import FlatButton from 'material-ui/FlatButton';
 
-
-
-class Navigation extends React.Component {
+class Navigation extends Component {
   render() {
     return (
           <div>

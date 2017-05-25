@@ -2,6 +2,9 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import PermissionToUserForm from './forms/PermissionToUserForm'
 import PermissionToGroupForm from './forms/PermissionToGroupForm'
+import UserToGroupForm from './forms/UserToGroupForm'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+try { injectTapEventPlugin(); } catch (e) { console.log(e) }
 
 class Modal extends React.Component {
   render() {
@@ -11,7 +14,9 @@ class Modal extends React.Component {
            return <PermissionToUserForm handleSubmit={this.props.permissionToUser} users={this.props.users} subjects={this.props.subjects}/>
         case 'permissionToGroup':
            return <PermissionToGroupForm handleSubmit={this.props.permissionToGroup} groups={this.props.groups} subjects={this.props.subjects}/>
-      
+        case 'userToGroup':
+           return <UserToGroupForm handleSubmit={this.props.userToGroup} groups={this.props.groups} users={this.props.users}/>
+
         default:
           return null
       }
@@ -20,7 +25,7 @@ class Modal extends React.Component {
         <div>
           <Dialog
             title={this.props.title}
-            // actions={actions}
+            onRequestClose={this.props.closeModal}
             modal={true}
             open={this.props.open}
           >

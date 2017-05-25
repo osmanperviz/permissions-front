@@ -11,6 +11,7 @@ import {
 
 class GroupAndUsersTable extends React.Component {
   render(){
+    // console.log('grou', this.props)
     return(
       <Table selectable={false}>
         <TableHeader>
@@ -27,7 +28,8 @@ class GroupAndUsersTable extends React.Component {
 
               <TableRowColumn>{group.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
               <TableRowColumn>
-                 <FlatButton primary={true}>Add user</FlatButton>
+                 <FlatButton primary={true} onClick={this.props.permissionToGroup}>Add Permission</FlatButton>
+                 <FlatButton primary={true} onClick={this.props.usersToGroup}>Add user</FlatButton>
                  <FlatButton primary={true}>Clear Permissions</FlatButton>
                  <FlatButton primary={true}>Clear Users</FlatButton>
               </TableRowColumn>
@@ -41,7 +43,7 @@ class GroupAndUsersTable extends React.Component {
               <TableRowColumn>{user.permissions.map((permission) => `${permission.name} ,`)}</TableRowColumn>
               <TableRowColumn>
                  <FlatButton primary={true} onClick={this.props.permissionToUser}>Add Permission</FlatButton>
-                 <FlatButton primary={true}>Add to Group</FlatButton>
+                 <FlatButton primary={true} onClick={this.props.usersToGroup}>Add to Group</FlatButton>
                  <FlatButton primary={true}>Clear Permissions</FlatButton>
                  <FlatButton primary={true}>Clear Groups</FlatButton>
               </TableRowColumn>

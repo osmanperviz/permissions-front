@@ -24,12 +24,29 @@ export function addPermissionToGroup(permissionData) {
     permissionData
   }
 }
+
+export function addUserToGroup(groupData) {
+  return {
+    type: types.ADD_USER_TO_GROUP,
+    groupData
+  }
+}
+
+export function removeUsersFromGroup(groupId) {
+  return {
+    type: types.REMOVE_USERS_FROM_GROUP,
+    groupId
+  }
+}
+
 export function getSubjects() {
   return {
     type: types.GET_SUBJECTS,
   }
 }
 export function openModal() {
+
+
   return {
     type: types.OPEN_MODAL,
   }

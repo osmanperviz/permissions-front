@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux'
 import GroupsAndUsersTable from './GroupsAndUsersTable'
-import Modal from './Modal'
 
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+import {Card, CardHeader, CardText} from 'material-ui/Card';
 
 
 
@@ -19,6 +16,8 @@ class GroupsAndUsers extends Component {
             groups={this.props.groups}
             users={this.props.users}
             permissionToUser={this.props.permissionToUser}
+            permissionToGroup={this.props.permissionToGroup}
+            usersToGroup={this.props.userToGroup}
           />
         </CardText>
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Groups from './Groups'
+import * as types from '../Actions/types'
 import GroupsAndUsers from './GroupsAndUsers'
 import Navigation from './AppBar'
 import Modal from './Modal'
@@ -9,7 +10,9 @@ import { getGroups,
         addPermissionToUser,
         addPermissionToGroup,
         openModal,
-        getSubjects } from '../Actions'
+        getSubjects,
+        addUserToGroup,
+        removeUsersFromGroup } from '../Actions'
 
 class Permissions extends Component {
 
@@ -20,8 +23,6 @@ class Permissions extends Component {
       layout: null
     }
   }
-
-
 
   componentWillMount() {
     this.props.getGroups()
@@ -35,6 +36,12 @@ class Permissions extends Component {
   _handlePermissionToGroupSubmit = (group_id, permission, subject_id) => {
     this.props.addPermissionToGroup({ group_id, permission, subject_id })
   }
+  _handleUserToGroupSubmit = (user_id, group_id) => {
+    this.props.addUserToGroup({ user_id, group_id })
+  }
+  _handleRemoveuserFromGroup = (group_id) => {
+    this.props.removeUsersFromGroup(group_id)
+  }
 
   _openModal = () => {
     this.setState({
@@ -42,6 +49,9 @@ class Permissions extends Component {
       layout: 'permissionToUser'
     })
     this.props.openModal()
+  }
+  _closeModal = (dispatch) => {
+    dispatch(types.CLOSE_MODAL)
   }
 
   _permissionToGroup = () => {
@@ -52,14 +62,24 @@ class Permissions extends Component {
     this.props.openModal()
   }
 
+  _userToGroup = () => {
+    this.setState({
+      modalTitle: 'Add user to Group',
+      layout: 'userToGroup'
+    })
+    this.props.openModal()
+  }
+
   render() {
     return (
       <div>
         <Navigation/>
         <Groups
           groups={this.props.groups}
-          permissionToGroup={this._permissionToGroup}
           users={this.props.users}
+          permissionToGroup={this._permissionToGroup}
+          userToGroup={this._userToGroup}
+          removeUsersFromGroup={this._handleRemoveuserFromGroup}
         />
         <br />
         <br />
@@ -67,6 +87,8 @@ class Permissions extends Component {
           groups={this.props.groups}
           users={this.props.users}
           permissionToUser={this._openModal}
+          permissionToGroup={this._permissionToGroup}
+          userToGroup={this._userToGroup}
         />
 
         <Modal
@@ -75,9 +97,11 @@ class Permissions extends Component {
           layout={this.state.layout}
           permissionToUser={this._handlePermissionToUserSubmit}
           permissionToGroup={this._handlePermissionToGroupSubmit}
+          userToGroup={this._handleUserToGroupSubmit}
           groups={this.props.groups}
           users={this.props.users}
           subjects={this.props.subjects}
+          closeModal={this._closeModal}
         />
       </div>
     )
@@ -100,6 +124,12 @@ function mapDispatchToProps(dispatch) {
     },
     addPermissionToGroup: (permissionData) => {
       dispatch(addPermissionToGroup(permissionData))
+    },
+    addUserToGroup: (groupData) => {
+      dispatch(addUserToGroup(groupData))
+    },
+    removeUsersFromGroup: (groupId) => {
+      dispatch(removeUsersFromGroup(groupId))
     },
     openModal: () => {
       dispatch(openModal())
