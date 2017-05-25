@@ -12,7 +12,10 @@ import { getGroups,
         openModal,
         getSubjects,
         addUserToGroup,
-        removeUsersFromGroup } from '../Actions'
+        removeUsersFromGroup,
+        clearPermissionsFromUser,
+        clearPermissionsFromGroup
+      } from '../Actions'
 
 class Permissions extends Component {
 
@@ -42,6 +45,11 @@ class Permissions extends Component {
   _handleRemoveuserFromGroup = (group_id) => {
     this.props.removeUsersFromGroup(group_id)
   }
+  _handleClearPermissionsSubmit = (entityInfo) => {
+    debugger;
+    entityInfo.entity == 'user' ? this.props.clearPermissionsFromUser(entityInfo.id) :
+    this.props.clearPermissionsFromGroup(entityInfo.id)
+  }
 
   _openModal = () => {
     this.setState({
@@ -50,6 +58,7 @@ class Permissions extends Component {
     })
     this.props.openModal()
   }
+
   _closeModal = (dispatch) => {
     dispatch(types.CLOSE_MODAL)
   }
@@ -80,6 +89,7 @@ class Permissions extends Component {
           permissionToGroup={this._permissionToGroup}
           userToGroup={this._userToGroup}
           removeUsersFromGroup={this._handleRemoveuserFromGroup}
+          clearPermissions={this._handleClearPermissionsSubmit}
         />
         <br />
         <br />
@@ -89,6 +99,7 @@ class Permissions extends Component {
           permissionToUser={this._openModal}
           permissionToGroup={this._permissionToGroup}
           userToGroup={this._userToGroup}
+          clearPermissions={this._handleClearPermissionsSubmit}
         />
 
         <Modal
@@ -130,6 +141,12 @@ function mapDispatchToProps(dispatch) {
     },
     removeUsersFromGroup: (groupId) => {
       dispatch(removeUsersFromGroup(groupId))
+    },
+    clearPermissionsFromGroup: (id) => {
+      dispatch(clearPermissionsFromGroup(id))
+    },
+    clearPermissionsFromUser: (id) => {
+      dispatch(clearPermissionsFromUser(id))
     },
     openModal: () => {
       dispatch(openModal())

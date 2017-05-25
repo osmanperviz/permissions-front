@@ -18,6 +18,7 @@ class GroupsAndUsers extends Component {
             permissionToUser={this.props.permissionToUser}
             permissionToGroup={this.props.permissionToGroup}
             usersToGroup={this.props.userToGroup}
+            clearPermissions={this.props.clearPermissions}
           />
         </CardText>
 

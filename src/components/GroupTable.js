@@ -31,6 +31,10 @@ class GroupTable extends React.Component {
     });
   };
 
+  _handleClearPermissions = (i,e,a) => {
+    debugger
+  };
+
   render(){
     return(
       <Table onCellClick={this._handleRowSelection}>
@@ -51,8 +55,6 @@ class GroupTable extends React.Component {
               <TableRowColumn>
                  <FlatButton primary={true} onClick={this.props.permissionToGroup}>Add Permission</FlatButton>
                  <FlatButton primary={true} onClick={this.props.userToGroup}>Add user</FlatButton>
-                 {/* <FlatButton primary={true}>Clear Permissions</FlatButton>
-                 <FlatButton primary={true}>Clear Users</FlatButton> */}
               </TableRowColumn>
               <TableRowColumn></TableRowColumn>
             </TableRow>

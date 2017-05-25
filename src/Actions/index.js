@@ -44,9 +44,22 @@ export function getSubjects() {
     type: types.GET_SUBJECTS,
   }
 }
+
+export function clearPermissionsFromUser(id) {
+  return {
+    type: types.CLEAR_PERMISSIONS_FROM_USER,
+    id
+  }
+}
+
+export function clearPermissionsFromGroup(id) {
+  return {
+    type: types.CLEAR_PERMISSIONS_FROM_GROUP,
+    id
+  }
+}
+
 export function openModal() {
-
-
   return {
     type: types.OPEN_MODAL,
   }

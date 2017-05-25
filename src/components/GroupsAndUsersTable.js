@@ -11,7 +11,6 @@ import {
 
 class GroupAndUsersTable extends React.Component {
   render(){
-    // console.log('grou', this.props)
     return(
       <Table selectable={false}>
         <TableHeader>
@@ -30,8 +29,13 @@ class GroupAndUsersTable extends React.Component {
               <TableRowColumn>
                  <FlatButton primary={true} onClick={this.props.permissionToGroup}>Add Permission</FlatButton>
                  <FlatButton primary={true} onClick={this.props.usersToGroup}>Add user</FlatButton>
-                 <FlatButton primary={true}>Clear Permissions</FlatButton>
-                 <FlatButton primary={true}>Clear Users</FlatButton>
+                 <FlatButton
+                  //  disabled={(group) => { group.permissions.length > 0 ? true : false}}
+                   primary={true}
+                   onClick={() => { this.props.clearPermissions({id: group.id, entity: 'group'}) }}
+                   >
+                     Clear Permissions
+                  </FlatButton>
               </TableRowColumn>
             </TableRow>
           }) : null }
@@ -44,8 +48,12 @@ class GroupAndUsersTable extends React.Component {
               <TableRowColumn>
                  <FlatButton primary={true} onClick={this.props.permissionToUser}>Add Permission</FlatButton>
                  <FlatButton primary={true} onClick={this.props.usersToGroup}>Add to Group</FlatButton>
-                 <FlatButton primary={true}>Clear Permissions</FlatButton>
-                 <FlatButton primary={true}>Clear Groups</FlatButton>
+                 <FlatButton
+                   primary={true}
+                   onClick={() => { this.props.clearPermissions({id: user.id, entity: 'user'}) }}
+                   >
+                   Clear Permissions
+                 </FlatButton>
               </TableRowColumn>
             </TableRow>
           }) : null }

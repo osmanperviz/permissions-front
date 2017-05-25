@@ -9,15 +9,26 @@ function* performRemoveUsersFromGroups(request){
     yield put({ type: types.CLOSE_MODAL })
     yield put({type: types.REMOVE_USERS_FROM_GROUP_SUCCESS, group})
   } catch (err) {
-
+    console.error('error', err)
   }
 }
+
+function* performRemovePermissionsFromGroup(request){
+  try {
+     const group = yield call(Api.get, `/groups/${request.id}/remove_permissions_from_group`)
+     yield put({ type: types.CLOSE_MODAL })
+     yield put({type: types.CLEAR_PERMISSIONS_FROM_GROUP_SUCCESS, group})
+  } catch (err) {
+    console.error('error', err)
+  }
+}
+
 function* performGetGroups(request){
   try {
     const groups = yield call(Api.get, '/groups')
     yield put({type: types.FETCH_GROUP_SUCCESS, groups})
   } catch (err) {
-
+    console.error('error', err)
   }
 }
 
@@ -29,7 +40,7 @@ function* performAddPermissonToGroups(request){
     yield put({ type: types.CLOSE_MODAL })
     yield put({ type: types.SUCCESS_ASSIGN_PERMISSION_TO_GROUP, group })
   } catch (err) {
-
+    console.error('error', err)
   }
 }
 
@@ -40,7 +51,7 @@ function* performUserToGroup(request){
     yield put({type: types.CLOSE_MODAL})
     yield put({type: types.ADD_USER_TO_GROUP_SUCCESS, group})
   } catch (err) {
-
+    console.error('error', err)
   }
 }
 
@@ -57,13 +68,19 @@ function* watchGetGroups() {
 function* watchPermissionToGroups() {
   yield takeEvery(types.ADD_PERMISSION_TO_GROUP, performAddPermissonToGroups);
 }
+
 function* watchRemoveUsersFromGroup() {
   yield takeEvery(types.REMOVE_USERS_FROM_GROUP, performRemoveUsersFromGroups);
+}
+
+function* watchRemovePermissionsFromGroup() {
+  yield takeEvery(types.CLEAR_PERMISSIONS_FROM_GROUP, performRemovePermissionsFromGroup);
 }
 
 export default [
   fork(watchGetGroups),
   fork(watchPermissionToGroups),
   fork(watchRemoveUsersFromGroup),
+  fork(watchRemovePermissionsFromGroup),
   fork(watchUserToGroup),
 ]

@@ -10,6 +10,11 @@ function users(state = {}, action) {
       return [...state, ...action.user]
       break;
 
+    case types.CLEAR_PERMISSIONS_FROM_USER_SUCCESS:
+    debugger;
+      return [...state, ...action.user ]
+      break;
+
     default:
       return state
   }

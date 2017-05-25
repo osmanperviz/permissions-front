@@ -7,7 +7,7 @@ function* performGetSubjects(request){
     const subjects = yield call(Api.get, '/subjects')
     yield put({type: types.FETCH_SUBJECTS_SUCCESS, subjects})
   } catch (err) {
-
+    console.error('error', err)
   }
 }
 

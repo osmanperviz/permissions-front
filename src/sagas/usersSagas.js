@@ -7,7 +7,7 @@ function* performGetUsers(request){
     const users = yield call(Api.get, '/users')
     yield put({type: types.FETCH_USERS_SUCCESS, users})
   } catch (err) {
-
+    console.error('error', err)
   }
 }
 
@@ -19,7 +19,18 @@ function* performAddPermissonToUsers(request){
     yield put({type: types.CLOSE_MODAL})
     yield put({type: types.SUCCESS_ASSIGN_PERMISSION, user})
   } catch (err) {
+    console.error('error', err)
+  }
+}
 
+function* performRemovePermissionsFromUser(request){
+  try {
+    const user = yield call(Api.get, `/users/${request.id}/remove_permissions`)
+    debugger;
+    yield put({ type: types.CLOSE_MODAL })
+    yield put({type: types.CLEAR_PERMISSIONS_FROM_USER_SUCCESS, user})
+  } catch (err) {
+    console.error('error', err)
   }
 }
 
@@ -32,8 +43,12 @@ function* watchPermissionToUser() {
   yield takeEvery(types.ADD_PERMISSION_TO_USER, performAddPermissonToUsers);
 }
 
+function* watchRemovePermissionsFromUser() {
+  yield takeEvery(types.CLEAR_PERMISSIONS_FROM_USER, performRemovePermissionsFromUser);
+}
+
 export default [
   fork(watchGetUsers),
   fork(watchPermissionToUser),
-
+  fork(watchRemovePermissionsFromUser),
 ]
