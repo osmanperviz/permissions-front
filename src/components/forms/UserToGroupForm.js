@@ -37,27 +37,30 @@ class UserToUserForm extends Component {
   render() {
     return(
       <form onSubmit={this._handleSubmit} >
-        <SelectField
-          floatingLabelText="User"
-          value={this.state.selectedUser}
-          onChange={this._handleChangeUser}
-        >
-          {
-            this.props.users.map((user) => ( <MenuItem key={user.id} value={user.id} primaryText={user.username} /> ))
-          }
-        </SelectField>
+        <div style={{display: 'flex'}}>
+          <SelectField
+            floatingLabelText="User"
+            value={this.state.selectedUser}
+            onChange={this._handleChangeUser}
+          >
+            {
+              this.props.users.map((user) => ( <MenuItem key={user.id} value={user.id} primaryText={user.username} /> ))
+            }
+          </SelectField>
 
-        <SelectField
-          floatingLabelText="Group"
-          value={this.state.selectedGroup}
-          onChange={this._handleChangeGroup}
-        >
-          {
-            this.props.groups.map((group) => ( <MenuItem key={group.id} value={group.id} primaryText={group.name} /> ))
-          }
-        </SelectField>
+          <SelectField
+            floatingLabelText="Group"
+            value={this.state.selectedGroup}
+            onChange={this._handleChangeGroup}
+          >
+            {
+              this.props.groups.map((group) => ( <MenuItem key={group.id} value={group.id} primaryText={group.name} /> ))
+            }
+          </SelectField>
 
-        <FlatButton label="Save" primary={true} fullWidth={true} onClick={this._handleSubmit} />
+        </div>
+        <FlatButton label="Save" primary={true} onClick={this._handleSubmit} />
+        <FlatButton label="Cancel" primary={true}  onClick={this.props.closeModal} />
       </form>
     )
   }

@@ -12,7 +12,6 @@ function users(state = {}, action) {
       break;
 
     case types.CLEAR_PERMISSIONS_FROM_USER_SUCCESS:
-    debugger
       return state.map((user) => user.id === action.user.id ?
           {...user, permissions: action.user.permissions} : user )
       break;

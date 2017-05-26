@@ -11,11 +11,11 @@ class Modal extends React.Component {
     const findComponent = () => {
       switch (this.props.layout) {
         case 'permissionToUser':
-           return <PermissionToUserForm handleSubmit={this.props.permissionToUser} users={this.props.users} subjects={this.props.subjects}/>
+           return <PermissionToUserForm handleSubmit={this.props.permissionToUser} users={this.props.users} subjects={this.props.subjects} closeModal={this.props.closeModal}/>
         case 'permissionToGroup':
-           return <PermissionToGroupForm handleSubmit={this.props.permissionToGroup} groups={this.props.groups} subjects={this.props.subjects}/>
+           return <PermissionToGroupForm handleSubmit={this.props.permissionToGroup} groups={this.props.groups} subjects={this.props.subjects} closeModal={this.props.closeModal}/>
         case 'userToGroup':
-           return <UserToGroupForm handleSubmit={this.props.userToGroup} groups={this.props.groups} users={this.props.users}/>
+           return <UserToGroupForm handleSubmit={this.props.userToGroup} groups={this.props.groups} users={this.props.users} closeModal={this.props.closeModal}/>
 
         default:
           return null
@@ -28,6 +28,7 @@ class Modal extends React.Component {
             onRequestClose={this.props.closeModal}
             modal={true}
             open={this.props.open}
+            onRequestClose={this.props.closeModal}
           >
             {
               findComponent()

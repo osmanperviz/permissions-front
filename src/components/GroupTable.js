@@ -13,9 +13,9 @@ import {
 
 class GroupTable extends React.Component {
 
-    state = {
-     selectedGroup: '',
-   };
+  state = {
+    selectedGroup: '',
+  };
 
   _handleRowSelection = (index) => {
     this.setState({
@@ -29,10 +29,6 @@ class GroupTable extends React.Component {
     this.setState({
       selectedGroup: '',
     });
-  };
-
-  _handleClearPermissions = (i,e,a) => {
-    debugger
   };
 
   render(){

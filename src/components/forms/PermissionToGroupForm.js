@@ -45,37 +45,42 @@ class PermissionToGroupForm extends Component {
     const permissions = [ 'view', 'modify', 'remove', 'add_new' ]
 
     return(
-      <form onSubmit={this._handleSubmit} >
-        <SelectField
-          floatingLabelText="Group"
-          value={this.state.selectedGroup}
-          onChange={this._handleChangeGroup}
-        >
-          {
-            this.props.groups.map((group) => ( <MenuItem key={group.id} value={group.id} primaryText={group.name} /> ))
-          }
-        </SelectField>
+      <form onSubmit={this._handleSubmit}>
+        <div style={{display: 'flex'}}>
+          <SelectField
+            floatingLabelText="Group"
+            value={this.state.selectedGroup}
+            onChange={this._handleChangeGroup}
+          >
+            {
+              this.props.groups.map((group) => ( <MenuItem key={group.id} value={group.id} primaryText={group.name} /> ))
+            }
+          </SelectField>
 
-        <SelectField
-          floatingLabelText="Permission"
-          value={this.state.selectedPermission}
-          onChange={this._handleChangePermission}
-        >
-          {
-            permissions.map((permission, index) => ( <MenuItem key={index} value={permission} primaryText={permission} /> ))
-          }
-        </SelectField>
+          <SelectField
+            floatingLabelText="Permission"
+            value={this.state.selectedPermission}
+            onChange={this._handleChangePermission}
+          >
+            {
+              permissions.map((permission, index) => ( <MenuItem key={index} value={permission} primaryText={permission} /> ))
+            }
+          </SelectField>
 
-        <SelectField
-          floatingLabelText="Subjects"
-          value={this.state.selectedSubject}
-          onChange={this._handleChangeSubject}
-        >
-          {
-            this.props.subjects.map((subject) => ( <MenuItem key={subject.id} value={subject.id} primaryText={subject.name} /> ))
-          }
-        </SelectField>
-        <FlatButton label="Save" primary={true} fullWidth={true} onClick={this._handleSubmit} />
+          <SelectField
+            floatingLabelText="Subjects"
+            value={this.state.selectedSubject}
+            onChange={this._handleChangeSubject}
+          >
+            {
+              this.props.subjects.map((subject) => ( <MenuItem key={subject.id} value={subject.id} primaryText={subject.name} /> ))
+            }
+          </SelectField>
+        </div>
+        <div>
+          <FlatButton label="Cancel" primary={true}  onClick={this.props.closeModal} />
+          <FlatButton label="Save" primary={true} onClick={this._handleSubmit} />
+        </div>
       </form>
     )
   }

@@ -46,7 +46,6 @@ export function getSubjects() {
 }
 
 export function clearPermissionsFromUser(id) {
-  debugger
   return {
     type: types.CLEAR_PERMISSIONS_FROM_USER,
     id
@@ -63,5 +62,11 @@ export function clearPermissionsFromGroup(id) {
 export function openModal() {
   return {
     type: types.OPEN_MODAL,
+  }
+}
+
+export function closeModal() {
+  return {
+    type: types.CLOSE_MODAL,
   }
 }
