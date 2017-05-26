@@ -24,9 +24,9 @@ function* performAddPermissonToUsers(request){
 }
 
 function* performRemovePermissionsFromUser(request){
+    debugger;
   try {
     const user = yield call(Api.get, `/users/${request.id}/remove_permissions`)
-    debugger;
     yield put({ type: types.CLOSE_MODAL })
     yield put({type: types.CLEAR_PERMISSIONS_FROM_USER_SUCCESS, user})
   } catch (err) {

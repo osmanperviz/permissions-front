@@ -7,12 +7,14 @@ function users(state = {}, action) {
       break;
 
     case types.SUCCESS_ASSIGN_PERMISSION:
-      return [...state, ...action.user]
+      return state.map((user) => user.id === action.user.id ?
+          {...user, permissions: action.user.permissions} : user )
       break;
 
     case types.CLEAR_PERMISSIONS_FROM_USER_SUCCESS:
-    debugger;
-      return [...state, ...action.user ]
+    debugger
+      return state.map((user) => user.id === action.user.id ?
+          {...user, permissions: action.user.permissions} : user )
       break;
 
     default:

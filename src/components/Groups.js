@@ -8,7 +8,6 @@ import {Card, CardHeader, CardText} from 'material-ui/Card';
 class Groups extends Component {
 
   render() {
-    console.error('error',this.props);
     return (
       <Card>
         <CardHeader title="Groups"/>

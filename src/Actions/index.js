@@ -46,6 +46,7 @@ export function getSubjects() {
 }
 
 export function clearPermissionsFromUser(id) {
+  debugger
   return {
     type: types.CLEAR_PERMISSIONS_FROM_USER,
     id

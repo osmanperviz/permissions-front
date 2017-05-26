@@ -7,22 +7,23 @@ function groups(state = {}, action) {
       break;
 
     case types.SUCCESS_ASSIGN_PERMISSION_TO_GROUP:
-      return [...state, ...action.group ]
+      return state.map((group) => group.id === action.group.id ?
+          {...group, permissions: action.group.permissions} : group )
       break;
 
     case types.ADD_USER_TO_GROUP_SUCCESS:
-    debugger;
-      return [...state, ...action.group ]
+      return state.map((group) => group.id === action.group.id ?
+          {...group, users: action.group.users} : group )
       break;
 
     case types.REMOVE_USERS_FROM_GROUP_SUCCESS:
-    debugger;
-      return [...state, ...action.group ]
+      return state.map((group) => group.id === action.group.id ?
+          {...group, users: action.group.users} : group )
       break;
 
     case types.CLEAR_PERMISSIONS_FROM_GROUP_SUCCESS:
-    debugger;
-      return [...state, ...action.group ]
+      return state.map((group) => group.id === action.group.id ?
+          {...group, permissions: action.group.permissions} : group )
       break;
 
     default:
